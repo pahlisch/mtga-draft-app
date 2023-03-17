@@ -1,1 +1,1 @@
-web: gunicorn wsgi:app
+web: gunicorn mtga-draft-app.wsgi
