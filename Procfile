@@ -1,1 +1,1 @@
-web: gunicorn mtga-draft-app.wsgi
+web: gunicorn flask-app:create_app
