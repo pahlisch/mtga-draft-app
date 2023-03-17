@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, render_template, request, jsonify
+    Blueprint, render_template, request, redirect, url_for
 )
 import pandas as pd
 import plotly.express as px
@@ -52,7 +52,7 @@ def plot_win_rate_over_ata(df):
 
     return fig
 
-@bp.route('/index', methods=["POST", "GET"])
+@bp.route('/', methods=["POST", "GET"])
 def index():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_filename = "data/all_data.csv"
@@ -95,5 +95,3 @@ def index():
                            format_list = format_list, 
                            selected_format=format
                            )
-
-
