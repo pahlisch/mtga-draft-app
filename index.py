@@ -76,7 +76,7 @@ def plot_win_rate_over_ata(df, color):
 @bp.route('/index', methods=["POST", "GET"])
 def index():
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    data_filename = "../data/all_data.csv"
+    data_filename = "data/all_data.csv"
 
     data_filepath = os.path.join(script_dir, data_filename)
 
