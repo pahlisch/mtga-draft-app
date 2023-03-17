@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 class="py-1">
+    {% block title %}Card win rate when in hand or drawn by average turn when card is picked{% endblock %}
+    <p>{{form}}</p>
+  </h2>
+  <div class="row">
+    <form class="form" name="extension_select" method="POST">
+      <div class="col-md-3 mb-2">
+        <select class="form-control" name="extension_list">
+          {% for extension in extension_list %}
+          {% if extension == selected_value %}
+          <option value="{{extension}}" selected>{{extension}}</option>
+          {% else %}
+          <option value="{{extension}}">{{extension}}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3 mb-2">
+          <select class="form-control" name="format_list">
+            {% for format in format_list %}
+            {% if format == selected_format %}
+            <option value="{{format}}" selected>{{format}}</option>
+            {% else %}
+            <option value="{{format}}">{{format}}</option>
+            {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mb-2">
+      <button type="submit" class="btn btn-primary">Generate graph</button>
+    </div>
+  </form>
+  </div>
+  <div class="row">
+    <div class="col">
+      {% if graphJSON != None %}
+      <div id='chart' class='rounded' ”>
+      <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+      <script type='text/javascript'>
+        let graphs = {{ graphJSON | safe}};
+        plot = Plotly.newPlot('chart', graphs, {}); 
+      </script>
+      {% else %}
+        <h2 class="text-center t-4">
+          There is no data available for this selection
+        </h2>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
