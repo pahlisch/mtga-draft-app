@@ -1,1 +1,1 @@
-web: gunicorn python:mtga-draft
+web: gunicorn mtga-draft:create_app()
