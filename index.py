@@ -9,8 +9,6 @@ import plotly
 
 bp = Blueprint('index', __name__)
 
-color_dict = {"Red":"R", "Blue":"U", "Black":"B", "Green":"G", "White":"W", "Colorless":"C", "Multicolor":"M"}
-
 def clean_data(df):
 
     df = df[["Name", "Color", "Rarity", "ATA", "GD WR", "IWD", "extension_name", "format"]]  
@@ -27,36 +25,17 @@ def clean_data(df):
 
     return df
 
-def plot_win_rate_over_ata(df, color):
+def plot_win_rate_over_ata(df):
 
-    color = [color_dict[n] for n in color]
-
-    sub_df = df[df["Color"].isin(color)]
-
-    color_map = {
-    "C": "#c3c3c3",
-    "B": "#303030",
-    "W": "rgb(247,225,160)",
-    "G": "rgb(26,115,49)",
-    "M": "rgb(218,165,32)",
-    "U": "rgb(33,84,154)",
-    "R": "rgb(209,32,36)"
-    }
-
-    #using a dictionary as color_map is throwing an error, this is a workaround so I can pass a list as argument
-    color_map = {key:value for key, value in color_map.items() if key in color}
-
-    fig = px.scatter(sub_df, 
+    fig = px.scatter(df, 
                      y="GD WR", 
                      x="ATA", 
-                     #color=color, 
                      title="Win rate when in hand or drawn by average turn picked",
                      labels={
                         "GD WR":"Average win rate when in hand or drawn",
                         "ATA":"Average turn picked",
                         "Color":"Card Color"
                      },
-                    #color_discrete_sequence=list(color_map.values()),
                      hover_name="Name", 
                      hover_data=[ 
                             "ATA"
@@ -102,7 +81,7 @@ def index():
         df = df[df["format"] == format]
 
     if len(df.index) > 0:
-        fig = plot_win_rate_over_ata(df, color_dict.keys())
+        fig = plot_win_rate_over_ata(df)
         graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     else:
         graphJSON = None
