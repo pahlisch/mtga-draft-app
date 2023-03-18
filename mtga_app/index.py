@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, render_template, request, redirect, url_for
+    Blueprint, render_template, request, redirect, url_for, jsonify
 )
 import pandas as pd
 import plotly.express as px
@@ -52,8 +52,8 @@ def plot_win_rate_over_ata(df):
 
     return fig
 
-@bp.route('/', methods=["POST", "GET"])
-def index():
+def get_df():
+
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_filename = "data/all_data.csv"
 
@@ -62,6 +62,13 @@ def index():
     df = pd.read_csv(data_filepath)
 
     df = clean_data(df)
+
+    return df
+
+@bp.route('/', methods=["POST", "GET"])
+def index():
+
+    df = get_df()
 
     if request.form.to_dict() == {}:
         extension = df["extension_name"].iloc[0]
@@ -95,3 +102,24 @@ def index():
                            format_list = format_list, 
                            selected_format=format
                            )
+
+@bp.route('/update_graph', methods=['POST'])
+def update_graph():
+
+    format = request.form['format']
+    extension = request.form['extension']
+
+    df = get_df()
+
+    if extension != None:
+        df = df[df["extension_name"] == extension]
+    if format != None:
+        df = df[df["format"] == format]
+
+    if len(df.index) > 0:
+        fig = plot_win_rate_over_ata(df)
+        graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+        return graphJSON
+    else:
+        return "df is empty"
+
