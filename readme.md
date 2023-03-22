@@ -1,4 +1,4 @@
-Flask app that display data from 17lands visually
+Flask app that display data from 17lands visually - the app is live at [draftmage.com](https://draftmage.com)
 
 static => static files css - js - favicon
 data => csv files to generate graph - don't freak out I'll use a db soon
