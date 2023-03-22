@@ -10,7 +10,7 @@ import plotly
 bp = Blueprint('index', __name__)
 
 def clean_data(df):
-
+    df = df[df["user_group"] == "All Users"]
     df = df[["Name", "Color", "Rarity", "ATA", "GD WR", "IWD", "extension_name", "format"]]  
     df["Color"] = df["Color"].fillna("C")
     df["Color"] = df["Color"].apply(lambda x: x if len(x) == 1 else 'M')
@@ -20,6 +20,7 @@ def clean_data(df):
     df["IWD"] = df["IWD"].apply(lambda x: float(x[:-2]))
 
     df["rounded_pick_order"] = df["ATA"].apply(lambda x: round(x, 0))
+    
 
 
 
