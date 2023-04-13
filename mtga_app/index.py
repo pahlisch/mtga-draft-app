@@ -6,6 +6,8 @@ import plotly.express as px
 import os
 import json
 import plotly
+import sqlalchemy as sql
+from dotenv import load_dotenv
 
 bp = Blueprint('index', __name__)
 
@@ -127,4 +129,27 @@ def update_graph():
 @bp.route('/draft_status', methods=['POST'])
 def draft_status():
 
-    return "coucou"
+    load_dotenv()
+    user = os.getenv('DB_USERNAME')
+    db = os.getenv('DB')
+    host = os.getenv('DB_HOST')
+    password = os.getenv('DB_PASSWORD')
+
+    engine = sql.create_engine(f"mysql+pymysql://{user}:{password}@{host}/{db}?charset=utf8mb4")
+
+    data = request.get_data()
+
+    print(data)
+
+    pack = data["DraftPack"].json()
+
+    print(pack)
+
+    with engine.connect() as conn:
+        result = conn.execution_options(stream_results=True).execute((f"select win_rate from scryfall_cards s INNER JOIN draft_data d ON s.id = d.scryfall_id where arena_id IN {pack}"))
+
+    rep_data = dict(zip(pack, result))
+
+    print(rep_data)
+
+    return rep_data
