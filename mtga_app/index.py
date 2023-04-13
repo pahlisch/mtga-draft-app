@@ -126,5 +126,5 @@ def update_graph():
 
 @bp.route('/draft_status', methods=['POST'])
 def update_graph():
-    request.json 
+    print(request)
     return request
