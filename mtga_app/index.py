@@ -126,5 +126,5 @@ def update_graph():
 
 @bp.route('/draft_status', methods=['POST'])
 def draft_status():
-    print(request)
-    return request
+
+    return "coucou"
