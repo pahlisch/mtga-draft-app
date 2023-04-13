@@ -10,30 +10,30 @@ db = os.getenv('DB')
 host = os.getenv('DB_HOST')
 password = os.getenv('DB_PASSWORD')
 
-config = {
-  'user': user,
-  'password': password,
-  'host': host,
-  'database': db,
-  'raise_on_warnings': True
-}
+
 
 columns_to_format = ["related_uris", "prices", "artist_ids", "finishes", "games", "legalities", "mana_cost", "image_uris", "multiverse_ids"]
 df = pd.read_json("mtga_app/data/oracle-cards.json")
 
-df = df.fillna("no_data")
+df = df.fillna("0")
 
 excluded = ["uri", "scryfall_uri", "image_uris"]
 
 col_type_list = ["colors", "color_identity", "keywords"]
 
 columns = ["id", "oracle_id", "arena_id", "name",  "oracle_text", "mana_cost", "cmc", "colors", "color_identity", "keywords", "type_line", "set_id", "set_name", "set_type", "rarity", "power", "toughness", "produced_mana", "loyalty", "life_modifier", "hand_modifier", "color_indicator"]
-columns = df.columns
+columns = ["id", "arena_id"]
 df = df[columns]
 
 for col in columns:
     df[col] = df[col].apply(str)
 
+df["arena_id"] = df["arena_id"].apply(lambda x: x.replace(".0", "") if len(x) > 2 else x)
+
+
+
+
+connection_string = f"mysql+pymysql://{user}:{password}@{host}/{db}?charset=utf8mb4"
 
 engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{db}?charset=utf8mb4")
 

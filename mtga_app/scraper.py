@@ -47,6 +47,6 @@ for set in sets:
 
 engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{db}?charset=utf8mb4")
 
-df.to_sql("draft_data2", engine, if_exists="replace", index=False)
+df.to_sql("draft_data", engine, if_exists="replace", index=False)
 
 engine.dispose()
