@@ -1,0 +1,128 @@
+{
+    "object": "card",
+    "id": "67f0a63e-0866-423e-b917-fc7c71063021",
+    "oracle_id": "eac94269-4baa-4b8e-a0fd-d6b227d1cde3",
+    "multiverse_ids": [
+        602602
+    ],
+    "mtgo_id": 106359,
+    "arena_id": 83772,
+    "tcgplayer_id": 479284,
+    "cardmarket_id": 694164,
+    "name": "Thrummingbird",
+    "lang": "en",
+    "released_at": "2023-02-03",
+    "uri": "https://api.scryfall.com/cards/67f0a63e-0866-423e-b917-fc7c71063021",
+    "scryfall_uri": "https://scryfall.com/card/one/72/thrummingbird?utm_source=api",
+    "layout": "normal",
+    "highres_image": true,
+    "image_status": "highres_scan",
+    "image_uris": {
+        "small": "https://cards.scryfall.io/small/front/6/7/67f0a63e-0866-423e-b917-fc7c71063021.jpg?1675956992",
+        "normal": "https://cards.scryfall.io/normal/front/6/7/67f0a63e-0866-423e-b917-fc7c71063021.jpg?1675956992",
+        "large": "https://cards.scryfall.io/large/front/6/7/67f0a63e-0866-423e-b917-fc7c71063021.jpg?1675956992",
+        "png": "https://cards.scryfall.io/png/front/6/7/67f0a63e-0866-423e-b917-fc7c71063021.png?1675956992",
+        "art_crop": "https://cards.scryfall.io/art_crop/front/6/7/67f0a63e-0866-423e-b917-fc7c71063021.jpg?1675956992",
+        "border_crop": "https://cards.scryfall.io/border_crop/front/6/7/67f0a63e-0866-423e-b917-fc7c71063021.jpg?1675956992"
+    },
+    "mana_cost": "{1}{U}",
+    "cmc": 2.0,
+    "type_line": "Creature — Phyrexian Bird Horror",
+    "oracle_text": "Flying\nWhenever Thrummingbird deals combat damage to a player, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",
+    "power": "1",
+    "toughness": "1",
+    "colors": [
+        "U"
+    ],
+    "color_identity": [
+        "U"
+    ],
+    "keywords": [
+        "Flying",
+        "Proliferate"
+    ],
+    "legalities": {
+        "standard": "legal",
+        "future": "legal",
+        "historic": "legal",
+        "gladiator": "legal",
+        "pioneer": "legal",
+        "explorer": "legal",
+        "modern": "legal",
+        "legacy": "legal",
+        "pauper": "legal",
+        "vintage": "legal",
+        "penny": "legal",
+        "commander": "legal",
+        "oathbreaker": "legal",
+        "brawl": "legal",
+        "historicbrawl": "legal",
+        "alchemy": "legal",
+        "paupercommander": "legal",
+        "duel": "legal",
+        "oldschool": "not_legal",
+        "premodern": "not_legal",
+        "predh": "legal"
+    },
+    "games": [
+        "paper",
+        "arena",
+        "mtgo"
+    ],
+    "reserved": false,
+    "foil": true,
+    "nonfoil": true,
+    "finishes": [
+        "nonfoil",
+        "foil"
+    ],
+    "oversized": false,
+    "promo": false,
+    "reprint": true,
+    "variation": false,
+    "set_id": "04bef644-343f-4230-95ee-255f29aa67a2",
+    "set": "one",
+    "set_name": "Phyrexia: All Will Be One",
+    "set_type": "expansion",
+    "set_uri": "https://api.scryfall.com/sets/04bef644-343f-4230-95ee-255f29aa67a2",
+    "set_search_uri": "https://api.scryfall.com/cards/search?order=set\u0026q=e%3Aone\u0026unique=prints",
+    "scryfall_set_uri": "https://scryfall.com/sets/one?utm_source=api",
+    "rulings_uri": "https://api.scryfall.com/cards/67f0a63e-0866-423e-b917-fc7c71063021/rulings",
+    "prints_search_uri": "https://api.scryfall.com/cards/search?order=released\u0026q=oracleid%3Aeac94269-4baa-4b8e-a0fd-d6b227d1cde3\u0026unique=prints",
+    "collector_number": "72",
+    "digital": false,
+    "rarity": "uncommon",
+    "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+    "artist": "José Parodi",
+    "artist_ids": [
+        "4aac5bf3-5a92-40f6-a0c3-6edc7373cc71"
+    ],
+    "illustration_id": "a1ab6bb0-783d-41c1-b2cc-4acf63de03ea",
+    "border_color": "black",
+    "frame": "2015",
+    "full_art": false,
+    "textless": false,
+    "booster": true,
+    "story_spotlight": false,
+    "edhrec_rank": 1089,
+    "penny_rank": 5102,
+    "preview": {
+        "source": "Wizards of the Coast",
+        "source_uri": "https://www.twitch.tv/videos/1717173018",
+        "previewed_at": "2023-01-24"
+    },
+    "prices": {
+        "usd": "0.06",
+        "usd_foil": "0.18",
+        "usd_etched": null,
+        "eur": "0.10",
+        "eur_foil": "0.05",
+        "tix": "0.01"
+    },
+    "related_uris": {
+        "gatherer": "https://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=602602",
+        "tcgplayer_infinite_articles": "https://infinite.tcgplayer.com/search?contentMode=article\u0026game=magic\u0026partner=scryfall\u0026q=Thrummingbird\u0026utm_campaign=affiliate\u0026utm_medium=api\u0026utm_source=scryfall",
+        "tcgplayer_infinite_decks": "https://infinite.tcgplayer.com/search?contentMode=deck\u0026game=magic\u0026partner=scryfall\u0026q=Thrummingbird\u0026utm_campaign=affiliate\u0026utm_medium=api\u0026utm_source=scryfall",
+        "edhrec": "https://edhrec.com/route/?cc=Thrummingbird"
+    }
+},
