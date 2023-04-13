@@ -125,6 +125,6 @@ def update_graph():
         return "df is empty"
 
 @bp.route('/draft_status', methods=['POST'])
-def update_graph():
+def draft_status():
     print(request)
     return request
