@@ -3,7 +3,6 @@ import pandas as pd
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
-import json
 
 
 load_dotenv()
@@ -26,24 +25,26 @@ params= "?expansion=SIR&format=TradDraft&user_group="
 
 base_url = "https://www.17lands.com/card_ratings/data"
 
-sets = ["BRO", "NEO", "ONE"]
+sets = ['SIR', '23ONE', 'ONE', '23BRO', 'BRO', '23DMU', 'DMU', 'HBG', '22SNC', 'SNC', 'NEO', 'DBL', 'VOW', 'RAVM', 'MID', 'AFR', 'STX', 'CORE', 'KHM', 'KLR', 'ZNR', 'AKR', 'M21', 'IKO', 'THB', 'ELD', 'M20', 'WAR', 'M19', 'DOM', 'XLN', 'RIX', 'GRN', 'RNA']
 formats =  ["QuickDraft", "PremierDraft"]
 
 df = pd.DataFrame()
 
 for set in sets:
     for format in formats:
+        print(f"{set=} {format=}")
         url = f"https://www.17lands.com/card_ratings/data?expansion={set}&format={format}"
         resp = req.get(url)
         data = resp.json()
-        temp_df = pd.DataFrame(data)
-        temp_df["scryfall_id"] = temp_df["url"].apply(lambda x: x.split("/")[-1].split(".")[0])
-        temp_df["drat_format"] = format 
-        temp_df["set"] = set
-        if len(df.index) == 0:
-            df = temp_df
-        else:
-            df = pd.concat([df, temp_df])
+        if data != []:
+            temp_df = pd.DataFrame(data)
+            temp_df["scryfall_id"] = temp_df["url"].apply(lambda x: x.split("/")[-1].split(".")[0])
+            temp_df["drat_format"] = format 
+            temp_df["set"] = set
+            if len(df.index) == 0:
+                df = temp_df
+            else:
+                df = pd.concat([df, temp_df])
 
 engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{db}?charset=utf8mb4")
 

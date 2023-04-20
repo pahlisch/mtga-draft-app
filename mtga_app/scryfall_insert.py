@@ -22,16 +22,13 @@ excluded = ["uri", "scryfall_uri", "image_uris"]
 col_type_list = ["colors", "color_identity", "keywords"]
 
 columns = ["id", "oracle_id", "arena_id", "name",  "oracle_text", "mana_cost", "cmc", "colors", "color_identity", "keywords", "type_line", "set_id", "set_name", "set_type", "rarity", "power", "toughness", "produced_mana", "loyalty", "life_modifier", "hand_modifier", "color_indicator"]
-columns = ["id", "arena_id"]
+
 df = df[columns]
 
 for col in columns:
     df[col] = df[col].apply(str)
 
 df["arena_id"] = df["arena_id"].apply(lambda x: x.replace(".0", "") if len(x) > 2 else x)
-
-
-
 
 connection_string = f"mysql+pymysql://{user}:{password}@{host}/{db}?charset=utf8mb4"
 
