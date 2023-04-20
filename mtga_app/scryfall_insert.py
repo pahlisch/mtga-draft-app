@@ -32,7 +32,7 @@ df["arena_id"] = df["arena_id"].apply(lambda x: x.replace(".0", "") if len(x) > 
 
 connection_string = f"mysql+pymysql://{user}:{password}@{host}/{db}?charset=utf8mb4"
 
-engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{db}?charset=utf8mb4")
+engine = create_engine(connection_string)
 
 df.to_sql("scryfall_cards", engine, if_exists="replace", index=False)
 
